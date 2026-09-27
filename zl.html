@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>非遗文化博览 | 艺脉AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",SimSun,serif;}
+        body{
+            background-color:#f5efe0;
+            position:relative;
+            min-height:100vh;
+            padding:40px;
+        }
+        .corner{
+            position:fixed;
+            width:160px;
+            height:160px;
+            pointer-events:none;
+            z-index:1;
+        }
+        .corner-tl{top:20px;left:20px;}
+        .corner-tr{top:20px;right:20px;transform: rotate(90deg);}
+        .corner-bl{bottom:20px;left:20px;transform: rotate(-90deg);}
+        .corner-br{bottom:20px;right:20px;transform: rotate(180deg);}
+        .corner svg{width:100%;height:100%;}
+        .header{text-align:center;margin-bottom:16px;position:relative;z-index:2;}
+        .header h1{font-size:36px;color:#4a3b2b;letter-spacing:4px;}
+        .header p{font-size:16px;color:#6b5a47;margin-top:6px;}
+        .nav{
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            background:rgba(120,95,65,0.12);
+            padding:14px;
+            border-radius:10px;
+            margin-bottom:32px;
+            flex-wrap:wrap;
+            position:relative;z-index:2;
+        }
+        .nav a{
+            text-decoration:none;
+            color:#4a3b2b;
+            padding:8px 18px;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .nav a.active{background:#705c3e;color:#fff;}
+        .nav a:hover{background:rgba(112,92,62,0.25);}
+        .main{position:relative;z-index:2;}
+        .main h1{font-size:28px;color:#4a3b2b;margin-bottom:8px;}
+        .main .desc{color:#6b5a47;margin-bottom:24px;}
+        .title-tip{margin-bottom:20px;font-size:20px;font-weight:bold;color:#4a3b2b;}
+        .card-wrap{display:grid;grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));gap:26px;}
+        .func-card{
+            background:rgba(255,255,255,0.45);
+            border:1px solid #d4c7b0;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 2px 8px rgba(74,59,43,0.12);
+        }
+        .card-img{height:160px;background:#e9e0cd;display:flex;align-items:center;justify-content:center;color:#555;font-size:14px;}
+        .card-body{padding:20px;}
+        .card-body h3{margin-bottom:10px;font-size:20px;color:#4a3b2b;}
+        .card-body p{color:#5c4d3b;font-size:14px;line-height:1.6;margin-bottom:16px;}
+        .card-btn{
+            background:#705c3e;color:#fff;
+            border:none;padding:9px 16px;border-radius:6px;cursor:pointer;
+        }
+        .card-btn:hover{background:#5c4b32;}
+    </style>
+</head>
+<body>
+    <div class="corner corner-tl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-tr">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-bl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-br">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+
+    <div class="header">
+        <h1>艺脉AI</h1>
+        <p>非遗数字活化创作与版权存证平台</p>
+    </div>
+    <div class="nav">
+        <a href="Asy.html">首页</a>
+        <a href="AI.html">非遗AI创作</a>
+        <a href="fy.qh.html">图片非遗化</a>
+        <a href="bq.html">版权存证中心</a>
+        <a href="zl.html" class="active">非遗文化博览</a>
+        <a href="gl.html">作品管理</a>
+        <a href="js.html">平台介绍</a>
+    </div>
+
+    <div class="main">
+        <h1>非遗文化博览</h1>
+        <p class="desc">浏览非遗项目，挑选风格，获取创作灵感</p>
+        <div class="title-tip">非遗项目展品库</div>
+        <div class="card-wrap">
+            <div class="func-card">
+                <div class="card-img"><img src="image/sc7.png" width="300" height="160" alt=""/></div>
+                <div class="card-body">
+                    <h3>青花瓷</h3>
+                    <p>中国传统瓷器艺术，蓝白素雅纹样，适合装饰图案创作。</p>
+                    <a href="qhc.html"><button class="card-btn">选用此风格创作</button></a>
+                </div>
+            </div>
+            <div class="func-card">
+                <div class="card-img"><img src="image/sc8.png" width="300" height="160" alt=""/></div>
+                <div class="card-body">
+                    <h3>民间剪纸</h3>
+                    <p>国家级非遗，线条简洁灵动，适合国风剪影创作。</p>
+                    <a href="jz.html"><button class="card-btn">选用此风格创作</button></a>
+                </div>
+            </div>
+            <div class="func-card">
+                <div class="card-img"><img src="image/sc9.png" width="300" height="160" alt=""/></div>
+                <div class="card-body">
+                    <h3>南京云锦</h3>
+                    <p>古代皇家织锦，繁复华丽，云纹花卉纹样丰富。</p>
+                    <a href="yj.html"><button class="card-btn">选用此风格创作</button></a>
+                </div>
+            </div>
+            <div class="func-card">
+                <div class="card-img"><img src="image/sc10.png" width="300" height="160" alt=""/></div>
+                <div class="card-body">
+                    <h3>皮影戏</h3>
+                    <p>传统皮影造型，轮廓古朴，极具东方故事感。</p>
+                    <a href="pyx.html"><button class="card-btn">选用此风格创作</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+function selectStyle(styleVal){
+    localStorage.setItem("selectStyle",styleVal);
+    alert("已选中该非遗风格，跳转非遗AI创作页面");
+    window.location.href="index.html";
+}
+</script>
+</body>
+</html>

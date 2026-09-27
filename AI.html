@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>非遗AI创作 | 艺脉AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",SimSun,serif;}
+        body{
+            background-color:#f5efe0;
+            position:relative;
+            min-height:100vh;
+            padding:40px;
+        }
+        .corner{
+            position:fixed;
+            width:160px;
+            height:160px;
+            pointer-events:none;
+            z-index:1;
+        }
+        .corner-tl{top:20px;left:20px;}
+        .corner-tr{top:20px;right:20px;transform: rotate(90deg);}
+        .corner-bl{bottom:20px;left:20px;transform: rotate(-90deg);}
+        .corner-br{bottom:20px;right:20px;transform: rotate(180deg);}
+        .corner svg{width:100%;height:100%;}
+        .header{text-align:center;margin-bottom:16px;position:relative;z-index:2;}
+        .header h1{font-size:36px;color:#4a3b2b;letter-spacing:4px;}
+        .header p{font-size:16px;color:#6b5a47;margin-top:6px;}
+        .nav{
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            background:rgba(120,95,65,0.12);
+            padding:14px;
+            border-radius:10px;
+            margin-bottom:32px;
+            flex-wrap:wrap;
+            position:relative;z-index:2;
+        }
+        .nav a{
+            text-decoration:none;
+            color:#4a3b2b;
+            padding:8px 18px;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .nav a.active{background:#705c3e;color:#fff;}
+        .nav a:hover{background:rgba(112,92,62,0.25);}
+        .main{position:relative;z-index:2;}
+        .main h1{font-size:28px;color:#4a3b2b;margin-bottom:8px;}
+        .main .desc{color:#6b5a47;margin-bottom:24px;}
+        .box{background:rgba(255,255,255,0.45);padding:25px;border-radius:10px;border:1px solid #d4c7b0;box-shadow:0 2px 6px rgba(74,59,43,0.12);}
+        textarea, select{width:100%;padding:10px;margin:10px 0;border:1px solid #c9b9a0;border-radius:6px;font-size:16px;background:#fff;}
+        .btn-wrap{
+            display:flex;
+            gap:12px;
+            margin:12px 0;
+        }
+        button{background:#705c3e;color:white;border:none;padding:12px 24px;border-radius:6px;cursor:pointer;font-size:16px;}
+        button:hover{background:#5c4b32;}
+        #saveBtn{
+            background:#3e6b48;
+        }
+        #saveBtn:hover{
+            background:#33593c;
+        }
+        #result{margin-top:20px;padding:15px;background:rgba(255,255,255,0.5);border:1px solid #d4c7b0;min-height:100px;white-space:pre‑line;}
+    </style>
+</head>
+<body>
+    <div class="corner corner-tl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-tr">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-bl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-br">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+<div class="header">
+        <h1>艺脉AI</h1>
+        <p>非遗数字活化创作与版权存证平台</p>
+</div>
+    <div class="nav">
+        <a href="Asy.html">首页</a>
+        <a href="AI.html" class="active">非遗AI创作</a>
+        <a href="fy.qh.html">图片非遗化</a>
+        <a href="bq.html">版权存证中心</a>
+        <a href="zl.html">非遗文化博览</a>
+        <a href="gl.html">作品管理</a>
+        <a href="js.html">平台介绍</a>
+    </div>
+<div class="main">
+        <h1>非遗AI创作</h1>
+        <p class="desc">输入描述，生成非遗风格纹样、海报作品</p>
+        <div class="box">
+            <p>输入提示词，生成非遗风格纹样/海报</p>
+            <textarea id="prompt" rows="4" placeholder="例如：青花瓷纹样，国风，蓝色，传统纹样"></textarea>
+            <!-- onchange：切换选项触发跳转 -->
+            <select id="style" onchange="goPage(this)">
+                <!-- data‑href 写你要跳转的网页文件名 -->
+                <option value="qinghua" data-href="AI.html">青花瓷</option>
+                <option value="brocade" data-href="AI.yj.html">云锦</option>
+                <option value="papercut" data-href="AI.jz.html">剪纸</option>
+                <option value="shadow" data-href="AI.pyx.html">皮影</option>
+            </select>
+            <div class="btn-wrap">
+                <button onclick="generate()">开始生成</button>
+                <button id="saveBtn" onclick="saveWork()">保存作品到作品管理</button>
+            </div>
+            <div id="result">生成结果会在这里展示</div>
+        </div>
+</div>
+
+<script>
+//下拉框切换跳转函数
+function goPage(sel){
+    //拿到当前选中option的data‑href属性
+    const href = sel.options[sel.selectedIndex].dataset.href;
+    if(href){
+        location.href = href;
+    }
+}
+</script>
+<script>
+// 风格映射：英文key转中文显示
+const styleMap = {
+    qinghua:"青花瓷",
+    brocade:"南京云锦",
+    papercut:"剪纸",
+    shadow:"皮影"
+};
+// 保存全局生成后的结果
+let currentResultText = "";
+
+window.onload = function(){
+    let s = localStorage.getItem("selectStyle");
+    if(s){
+        document.getElementById("style").value = s;
+        localStorage.removeItem("selectStyle");
+    }
+}
+
+// 模拟AI生成
+function generate(){
+    const text = document.getElementById("prompt").value.trim();
+    const styleVal = document.getElementById("style").value;
+    if(!text){
+        alert("请输入创作提示词！");
+        return;
+    }
+    const styleCn = styleMap[styleVal];
+    // 文本内容
+    const textContent = `模拟AI非遗作品生成结果
+--------------------------------
+创作描述：${text}
+选择非遗风格：${styleCn}
+--------------------------------
+已生成对应${styleCn}风格非遗创意作品。`;
+
+    // 把文本 + 图片拼接成HTML
+    currentResultText = textContent;
+    const htmlStr = `
+<pre style="white-space:pre‑line;margin:0;">${textContent}</pre>
+<div style="margin-top:16px;">
+    <img src="cp/qh2.png" width="200" height="300" alt=""/>
+</div>
+    `;
+    document.getElementById("result").innerHTML = htmlStr;
+}
+
+// 独立保存作品函数，补齐content字段，适配gl.html作品管理
+function saveWork(){
+    if(!currentResultText){
+        alert("请先点击【开始生成】，再保存作品！");
+        return;
+    }
+    const promptText = document.getElementById("prompt").value.trim();
+    const styleVal = document.getElementById("style").value;
+    const styleCn = styleMap[styleVal];
+
+    let workList = JSON.parse(localStorage.getItem("works") || "[]");
+    // 对象4个字段，和gl.html完全匹配 title style time content
+    workList.push({
+        title: promptText,
+        style: styleCn,
+        time: new Date().toLocaleString(),
+        content: currentResultText
+    });
+    localStorage.setItem("works",JSON.stringify(workList));
+    alert("✅保存成功！前往【作品管理(gl.html)】查看、查看下载删除！");
+}
+</script>
+</body>
+</html>

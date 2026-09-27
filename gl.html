@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>作品管理 | 艺脉AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",SimSun,serif;}
+        body{
+            background-color:#f5efe0;
+            position:relative;
+            min-height:100vh;
+            padding:40px;
+        }
+        .corner{
+            position:fixed;
+            width:160px;
+            height:160px;
+            pointer-events:none;
+            z-index:1;
+        }
+        .corner-tl{top:20px;left:20px;}
+        .corner-tr{top:20px;right:20px;transform: rotate(90deg);}
+        .corner-bl{bottom:20px;left:20px;transform: rotate(-90deg);}
+        .corner-br{bottom:20px;right:20px;transform: rotate(180deg);}
+        .corner svg{width:100%;height:100%;}
+        .header{text-align:center;margin-bottom:16px;position:relative;z-index:2;}
+        .header h1{font-size:36px;color:#4a3b2b;letter-spacing:4px;}
+        .header p{font-size:16px;color:#6b5a47;margin-top:6px;}
+        .nav{
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            background:rgba(120,95,65,0.12);
+            padding:14px;
+            border-radius:10px;
+            margin-bottom:32px;
+            flex-wrap:wrap;
+            position:relative;z-index:2;
+        }
+        .nav a{
+            text-decoration:none;
+            color:#4a3b2b;
+            padding:8px 18px;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .nav a.active{background:#705c3e;color:#fff;}
+        .nav a:hover{background:rgba(112,92,62,0.25);}
+        .main{position:relative;z-index:2;}
+        .main h1{font-size:28px;color:#4a3b2b;margin-bottom:8px;}
+        .main .desc{color:#6b5a47;margin-bottom:24px;}
+        .tip-box{background:#fff8d9;color:#9c7b27;padding:12px;border-radius:6px;border:1px solid #ffe89c;}
+        .work-item{
+            padding:12px;
+            background:rgba(255,255,255,0.45);
+            margin:10px 0;
+            border:1px solid #d4c7b0;
+            border-radius:6px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .work-text{
+            font-size:16px;
+            color:#333;
+        }
+        .btn-group{
+            display:flex;
+            gap:10px;
+        }
+        button{
+            padding:6px 14px;
+            border:none;
+            border-radius:4px;
+            cursor:pointer;
+            font-size:14px;
+        }
+        .btn-view{
+            background:#705c3e;
+            color:#fff;
+        }
+        .btn-download{
+            background:#3e6b48;
+            color:#fff;
+        }
+        .btn-delete{
+            background:#a83c3c;
+            color:#fff;
+        }
+        /* 弹窗遮罩 */
+        .mask{
+            display:none;
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background:rgba(0,0,0,0.55);
+            z-index:100;
+            align-items:center;
+            justify-content:center;
+        }
+        .mask.show{
+            display:flex;
+        }
+        .popup{
+            width:600px;
+            max-width:92%;
+            background:#f5efe0;
+            border:2px solid #b89c7d;
+            border-radius:10px;
+            padding:24px;
+        }
+        .popup h3{
+            color:#4a3b2b;
+            margin-bottom:16px;
+        }
+        .popup-content{
+            min-height:180px;
+            border:1px solid #d4c7b0;
+            padding:16px;
+            margin-bottom:16px;
+            line-height:1.7;
+            background:#fff;
+        }
+        .btn-close{
+            background:#888;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="corner corner-tl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-tr">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-bl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-br">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="header">
+        <h1>艺脉AI</h1>
+        <p>非遗数字活化创作与版权存证平台</p>
+    </div>
+    <div class="nav">
+        <a href="Asy.html">首页</a>
+        <a href="AI.html">非遗AI创作</a>
+        <a href="fy.qh.html">图片非遗化</a>
+        <a href="bq.html">版权存证中心</a>
+        <a href="fy.html">非遗文化博览</a>
+        <a href="gl.html" class="active">作品管理</a>
+        <a href="js.html">平台介绍</a>
+    </div>
+    <div class="main">
+        <h1>我的作品库</h1>
+        <p class="desc">管理所有创作作品与存证记录</p>
+        <div id="tipBox" class="tip-box">暂无作品，前往创作页面生成你的第一个非遗作品吧</div>
+        <div id="workList"></div>
+    </div>
+
+    <!-- 查看作品弹窗 -->
+    <div class="mask" id="viewMask">
+        <div class="popup">
+            <h3>作品完整信息</h3>
+            <div class="popup-content" id="popupContent"></div>
+            <button class="btn-close" onclick="closePopup()">关闭</button>
+        </div>
+    </div>
+
+<script>
+let workList = [];
+// 页面加载渲染
+window.onload = function(){
+    workList = JSON.parse(localStorage.getItem("works") || "[]");
+    renderWorks();
+}
+
+function renderWorks(){
+    const tipBox = document.getElementById("tipBox");
+    const workListDom = document.getElementById("workList");
+    workListDom.innerHTML = "";
+
+    if(workList.length > 0){
+        tipBox.style.display = "none";
+        workList.forEach((item, index)=>{
+            const div = document.createElement("div");
+            div.className = "work-item";
+            div.innerHTML = `
+                <div class="work-text">${item.title}｜风格：${item.style}｜创作时间：${item.time}</div>
+                <div class="btn-group">
+                    <button class="btn-view" onclick="openView(${index})">查看</button>
+                    <button class="btn-download" onclick="downloadFile(${index})">下载</button>
+                    <button class="btn-delete" onclick="deleteItem(${index})">删除</button>
+                </div>
+            `;
+            workListDom.appendChild(div);
+        })
+    }else{
+        tipBox.style.display = "block";
+    }
+}
+
+// 打开弹窗查看详情
+function openView(index){
+    const item = workList[index];
+    document.getElementById("popupContent").innerHTML = `
+        <p><strong>作品名称：</strong>${item.title}</p>
+        <p><strong>作品风格：</strong>${item.style}</p>
+        <p><strong>创作时间：</strong>${item.time}</p>
+        <p><strong>作品内容：</strong><br>${item.content}</p>
+    `;
+    document.getElementById("viewMask").classList.add("show");
+}
+
+// 关闭弹窗
+function closePopup(){
+    document.getElementById("viewMask").classList.remove("show");
+}
+
+// 下载TXT文件
+function downloadFile(index){
+    const item = workList[index];
+    const text = `艺脉AI非遗作品
+作品名称：${item.title}
+作品风格：${item.style}
+创作时间：${item.time}
+
+作品内容：
+${item.content}`;
+
+    const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${item.title}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+// 删除记录，带确认提示
+function deleteItem(index){
+    if(confirm("确定要删除这条作品记录吗？删除后不可恢复！")){
+        workList.splice(index,1);
+        localStorage.setItem("works",JSON.stringify(workList));
+        renderWorks();
+    }
+}
+</script>
+</body>
+</html>

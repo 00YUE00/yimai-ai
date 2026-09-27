@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>皮影戏详情 | 艺脉AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", SimSun, serif;
+        }
+
+        body {
+            background-color: #f5efe0;
+            position: relative;
+            min-height: 100vh;
+            padding: 40px;
+        }
+        /* 四角中式角花 */
+        .corner {
+            position: fixed;
+            width: 160px;
+            height: 160px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .corner-tl { top: 20px; left: 20px; }
+        .corner-tr { top: 20px; right: 20px; transform: rotate(90deg); }
+        .corner-bl { bottom: 20px; left: 20px; transform: rotate(-90deg); }
+        .corner-br { bottom: 20px; right: 20px; transform: rotate(180deg); }
+        .corner svg { width: 100%; height: 100%; }
+
+        .header {
+            text-align: center;
+            margin-bottom:16px;
+            position: relative;
+            z-index: 2;
+        }
+        .header h1 {
+            font-size:36px;
+            color:#4a3b2b;
+            letter-spacing:4px;
+        }
+        .header p {
+            font-size:16px;
+            color:#6b5a47;
+            margin-top:6px;
+        }
+
+        .nav {
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            background:rgba(120, 95, 65, 0.12);
+            padding:14px;
+            border-radius:10px;
+            margin-bottom:32px;
+            flex-wrap:wrap;
+            position:relative;
+            z-index:2;
+        }
+        .nav a {
+            text-decoration:none;
+            color:#4a3b2b;
+            padding:8px 18px;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .nav a.active {
+            background:#705c3e;
+            color:#fff;
+        }
+        .nav a:hover {
+            background:rgba(112,92,62,0.25);
+        }
+        .container{
+            position:relative;
+            z-index:2;
+            max-width:1000px;
+            margin:0 auto;
+            background:rgba(255,255,255,0.45);
+            padding:30px;
+            border-radius:12px;
+            border:1px solid #d4c7b0;
+        }
+        .img-box{
+            width:100%;
+            height:360px;
+            background:#e9e0cd;
+            border-radius:8px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#555;
+            font-size:18px;
+            margin-bottom:24px;
+        }
+        .container h2{
+            font-size:30px;
+            color:#4a3b2b;
+            margin-bottom:16px;
+        }
+        .container p{
+            color:#5c4d3b;
+            line-height:1.8;
+            font-size:16px;
+            margin-bottom:12px;
+        }
+        .btn-group{
+            margin-top:30px;
+            display:flex;
+            gap:16px;
+        }
+        .btn{
+            background:#705c3e;
+            color:#fff;
+            border:none;
+            padding:10px 22px;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:16px;
+            text-decoration:none;
+        }
+        .btn:hover{
+            background:#5c4b32;
+        }
+    </style>
+</head>
+<body>
+    <!--四角角花-->
+    <div class="corner corner-tl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-tr">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-bl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-br">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+
+    <div class="header">
+        <h1>艺脉AI</h1>
+        <p>非遗数字活化创作与版权存证平台</p>
+    </div>
+
+    <div class="nav">
+        <a href="Asy.html">首页</a>
+        <a href="AI.html">非遗AI创作</a>
+        <a href="fy.qh.html">图片非遗化</a>
+        <a href="bq.html">版权存证中心</a>
+        <a href="zl.html" class="active">非遗文化博览</a>
+        <a href="gl.html">作品管理</a>
+        <a href="js.html">平台介绍</a>
+    </div>
+
+    <div class="container">
+        <div class="img-box"><img src="image/素材10.png" width="500" height="350" alt=""/></div>
+        <h2>皮影戏</h2>
+        <p><strong>简介：</strong>皮影戏又称影子戏，是国家级非遗，用兽皮雕刻人物剪影，灯光投射在幕布上表演故事。</p>
+        <p><strong>历史渊源：</strong>起源于西汉，唐宋广泛流行，是中国最早的“动画艺术”。</p>
+        <p><strong>工艺特点：</strong>人物造型轮廓古朴，线条繁复，适合生成古风人物插画、短视频素材。</p>
+        <div class="btn-group">
+          <a href="AI.pyx.html" class="btn">选用此风格创作</a>
+          <a href="zl.html" class="btn">返回展品库</a>
+        </div>
+    </div>
+</body>
+</html>

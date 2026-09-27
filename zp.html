@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>作品管理 | 艺脉AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",SimSun,serif;}
+        body{
+            background-color:#f5efe0;
+            position:relative;
+            min-height:100vh;
+            padding:40px;
+        }
+        .corner{
+            position:fixed;
+            width:160px;
+            height:160px;
+            pointer-events:none;
+            z-index:1;
+        }
+        .corner-tl{top:20px;left:20px;}
+        .corner-tr{top:20px;right:20px;transform: rotate(90deg);}
+        .corner-bl{bottom:20px;left:20px;transform: rotate(-90deg);}
+        .corner-br{bottom:20px;right:20px;transform: rotate(180deg);}
+        .corner svg{width:100%;height:100%;}
+        .header{text-align:center;margin-bottom:16px;position:relative;z-index:2;}
+        .header h1{font-size:36px;color:#4a3b2b;letter-spacing:4px;}
+        .header p{font-size:16px;color:#6b5a47;margin-top:6px;}
+        .nav{
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            background:rgba(120,95,65,0.12);
+            padding:14px;
+            border-radius:10px;
+            margin-bottom:32px;
+            flex-wrap:wrap;
+            position:relative;z-index:2;
+        }
+        .nav a{
+            text-decoration:none;
+            color:#4a3b2b;
+            padding:8px 18px;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .nav a.active{background:#705c3e;color:#fff;}
+        .nav a:hover{background:rgba(112,92,62,0.25);}
+        .main{position:relative;z-index:2;}
+        .main h1{font-size:28px;color:#4a3b2b;margin-bottom:8px;}
+        .main .desc{color:#6b5a47;margin-bottom:24px;}
+        .tip-box{background:#fff8d9;color:#9c7b27;padding:12px;border-radius:6px;border:1px solid #ffe89c;}
+        .work-item{padding:12px;background:rgba(255,255,255,0.45);margin:10px 0;border:1px solid #d4c7b0;border-radius:6px;}
+    </style>
+</head>
+<body>
+    <div class="corner corner-tl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-tr">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-bl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-br">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+
+    <div class="header">
+        <h1>艺脉AI</h1>
+        <p>非遗数字活化创作与版权存证平台</p>
+    </div>
+    <div class="nav">
+        <a href="home.html">首页</a>
+        <a href="index.html">非遗AI创作</a>
+        <a href="page2.html">图片非遗化</a>
+        <a href="page3.html">版权存证中心</a>
+        <a href="culture.html">非遗文化博览</a>
+        <a href="page4.html" class="active">作品管理</a>
+        <a href="page5.html">平台介绍</a>
+    </div>
+
+    <div class="main">
+        <h1>我的作品库</h1>
+        <p class="desc">管理所有创作作品与存证记录</p>
+        <div id="tipBox" class="tip-box">暂无作品，前往创作页面生成你的第一个非遗作品吧</div>
+        <div id="workList"></div>
+    </div>
+<script>
+window.onload = function(){
+    let workList = JSON.parse(localStorage.getItem("works") || "[]");
+    if(workList.length>0){
+        document.getElementById("tipBox").style.display="none";
+        let html = "";
+        workList.forEach(item=>{
+            html += `<div class="work-item">${item.title}｜风格：${item.style}｜创作时间：${item.time}</div>`
+        })
+        document.getElementById("workList").innerHTML = html;
+    }
+}
+</script>
+</body>
+</html>

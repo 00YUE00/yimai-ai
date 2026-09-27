@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>艺脉AI｜首页</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",SimSun,serif;}
+        body{
+            background-color:#f5efe0; /*羊皮纸底色*/
+            position:relative;
+            min-height:100vh;
+            padding:40px;
+        }
+
+        /* ========== 四角 中式拐子回纹角花（和你截图同款直角纹样） ========== */
+        .corner{
+            position:fixed;
+            width:160px;
+            height:160px;
+            pointer-events:none;
+            z-index:1;
+        }
+        .corner-tl{top:20px;left:20px;}
+        .corner-tr{top:20px;right:20px;transform: rotate(90deg);}
+        .corner-bl{bottom:20px;left:20px;transform: rotate(-90deg);}
+        .corner-br{bottom:20px;right:20px;transform: rotate(180deg);}
+        .corner svg{width:100%;height:100%;}
+
+        /*顶部头部区域 Logo + 标题*/
+        .header{text-align:center;margin-bottom:16px;position:relative;z-index:2;}
+        .header h1{font-size:36px;color:#4a3b2b;letter-spacing:4px;}
+        .header p{font-size:16px;color:#6b5a47;margin-top:6px;}
+
+        /*横向导航栏*/
+        .nav{
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            background:rgba(120,95,65,0.12);
+            padding:14px;
+            border-radius:10px;
+            margin-bottom:32px;
+            flex-wrap:wrap;
+            position:relative;z-index:2;
+        }
+        .nav a{
+            text-decoration:none;
+            color:#4a3b2b;
+            padding:8px 18px;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .nav a.active{background:#705c3e;color:#fff;}
+        .nav a:hover{background:rgba(112,92,62,0.25);}
+
+        /*横幅宣传区*/
+        .banner{
+            background:rgba(112,92,62,0.15);
+            border-radius:12px;
+            padding:30px;
+            text-align:center;
+            margin-bottom:30px;
+            position:relative;z-index:2;
+        }
+        .banner h2{font-size:26px;color:#4a3b2b;margin-bottom:10px;}
+        .banner p{font-size:17px;color:#5c4d3b;}
+
+        /*卡片网格布局，和非遗博览一致*/
+        .card-wrap{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap:26px;
+            position:relative;z-index:2;
+        }
+        .func-card{
+            background:rgba(255,255,255,0.45);
+            border:1px solid #d4c7b0;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 2px 8px rgba(74,59,43,0.12);
+        }
+        .card-img{
+            height:160px;
+            background:#e9e0cd;
+            display:flex;align-items:center;justify-content:center;
+            color:#555;font-size:14px;
+        }
+        .card-body{padding:20px;}
+        .card-body h3{font-size:20px;color:#4a3b2b;margin-bottom:10px;}
+        .card-body p{color:#5c4d3b;font-size:14px;line-height:1.6;margin-bottom:16px;}
+        .card-btn{
+            background:#705c3e;color:#fff;
+            text-decoration:none;
+            padding:9px 16px;
+            border-radius:6px;
+            display:inline-block;
+        }
+        .card-btn:hover{background:#5c4b32;}
+    </style>
+</head>
+<body>
+    <!-- 四个角的中式拐子角花，SVG矢量绘制，就是你截图的纹样 -->
+    <div class="corner corner-tl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-tr">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-bl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+    <div class="corner corner-br">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none"/>
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none"/>
+        </svg>
+    </div>
+
+    <!--顶部Logo与标题-->
+    <div class="header">
+        <h1>艺脉AI</h1>
+        <p>非遗数字活化创作与版权存证平台</p>
+    </div>
+    <!--顶部横向导航-->
+    <div class="nav">
+        <a href="Asy.html" class="active">首页</a>
+        <a href="AI.html">非遗AI创作</a>
+        <a href="fy.qh.html">图片非遗化</a>
+        <a href="bq.html">版权存证中心</a>
+        <a href="zl.html">非遗文化博览</a>
+        <a href="gl.html">作品管理</a>
+        <a href="js.html">平台介绍</a>
+    </div>
+    <div class="banner">
+        <h2>让非遗在数字时代焕新</h2>
+        <p>以AI赋能传统文化，活化非遗纹样、守护原创版权，传承千年东方之美</p>
+    </div>
+
+    <!--功能卡片区域-->
+    <div class="card-wrap">
+        <div class="func-card">
+            <div class="card-img"><img src="image/sc1.jpg" width="300" height="160" alt=""/></div>
+            <div class="card-body">
+                <h3>非遗AI创作</h3>
+                <p>输入文字，一键生成非遗风格海报、传统纹样。</p>
+              <a href="AI.html" class="card-btn">前往创作</a>
+            </div>
+        </div>
+        <div class="func-card">
+          <div class="card-img"><img src="image/sc2.jpg" width="300" height="160" alt=""/></div>
+            <div class="card-body">
+              <h3>图片非遗化</h3>
+                <p>上传照片，转换成剪纸、青花瓷等非遗艺术风格。</p>
+                <a href="fy.qh.html" class="card-btn">开始转换</a>
+          </div>
+        </div>
+        <div class="func-card">
+            <div class="card-img"><img src="image/sc3.jpg" width="300" height="160" alt=""/></div>
+            <div class="card-body">
+                <h3>版权存证中心</h3>
+                <p>作品一键存证，生成电子证书，保护创作者知识产权。</p>
+                <a href="bq.html" class="card-btn">提交存证</a>
+            </div>
+        </div>
+        <div class="func-card">
+            <div class="card-img"><img src="image/sc4.jpg" width="300" height="160" alt=""/></div>
+            <div class="card-body">
+                <h3>非遗文化博览</h3>
+                <p>浏览各类非遗项目，挑选风格，获取创作灵感。</p>
+                <a href="zl.html" class="card-btn">浏览博览</a>
+            </div>
+        </div>
+        <div class="func-card">
+            <div class="card-img"><img src="image/sc5.jpg" width="300" height="160" alt=""/></div>
+            <div class="card-body">
+                <h3>作品管理</h3>
+                <p>查看、管理所有AI生成作品与存证记录及编号。</p>
+                <a href="gl.html" class="card-btn">查看作品</a>
+            </div>
+        </div>
+        <div class="func-card">
+            <div class="card-img"><img src="image/sc6.jpg" width="300" height="160" alt=""/></div>
+            <div class="card-body">
+                <h3>平台介绍</h3>
+                <p>了解艺脉AI项目背景、技术思路与项目价值。</p>
+                <a href="js.html" class="card-btn">了解更多</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

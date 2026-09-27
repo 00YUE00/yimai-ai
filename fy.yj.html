@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图片非遗化 | 艺脉AI</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",SimSun,serif;}
+        body{
+            background-color:#f5efe0;
+            position:relative;
+            min-height:100vh;
+            padding:40px;
+        }
+        .corner{
+            position:fixed;
+            width:160px;
+            height:160px;
+            pointer-events:none;
+            z-index:1;
+        }
+        .corner-tl{top:20px;left:20px;}
+        .corner-tr{top:20px;right:20px;transform: rotate(90deg);}
+        .corner-bl{bottom:20px;left:20px;transform: rotate(-90deg);}
+        .corner-br{bottom:20px;right:20px;transform: rotate(180deg);}
+        .corner svg{width:100%;height:100%;}
+        .header{text-align:center;margin-bottom:16px;position:relative;z-index:2;}
+        .header h1{font-size:36px;color:#4a3b2b;letter-spacing:4px;}
+        .header p{font-size:16px;color:#6b5a47;margin-top:6px;}
+        .nav{
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            background:rgba(120,95,65,0.12);
+            padding:14px;
+            border-radius:10px;
+            margin-bottom:32px;
+            flex-wrap:wrap;
+            position:relative;z-index:2;
+        }
+        .nav a{
+            text-decoration:none;
+            color:#4a3b2b;
+            padding:8px 18px;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .nav a.active{background:#705c3e;color:#fff;}
+        .nav a:hover{background:rgba(112,92,62,0.25);}
+        .main{position:relative;z-index:2;}
+        .main h1{font-size:28px;color:#4a3b2b;margin-bottom:8px;}
+        .main .desc{color:#6b5a47;margin-bottom:24px;}
+        .box{background:rgba(255,255,255,0.45);padding:25px;border-radius:10px;border:1px solid #d4c7b0;box-shadow:0 2px 6px rgba(74,59,43,0.12);}
+        input{width:100%;padding:10px;margin:10px 0;border:1px solid #c9b9a0;border-radius:6px;background:#fff;}
+        select{width:100%;padding:10px;margin:10px 0;border:1px solid #c9b9a0;border-radius:6px;font-size:16px;background:#fff;}
+        .btn-group{
+            display:flex;
+            gap:12px;
+            margin:10px 0;
+        }
+        button{background:#705c3e;color:white;border:none;padding:12px 24px;border-radius:6px;cursor:pointer;font-size:16px;}
+        button:hover{background:#5c4b32;}
+        #saveBtn{
+            background:#3e6b48;
+        }
+        #saveBtn:hover{
+            background:#33593c;
+        }
+        #resultArea{margin-top:20px;padding:15px;background:rgba(255,255,255,0.5);border:1px solid #d4c7b0;min-height:80px;}
+    </style>
+</head>
+<body>
+    <div class="corner corner-tl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-tr">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-bl">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="corner corner-br">
+        <svg viewBox="0 0 160 160">
+            <path d="M 0,4 L 120,4 L 120,24 L 24,24 L 24,60 L 60,60 L 60,120 L 4,120 L4,0" stroke="#992828" stroke-width="4" fill="none" />
+            <path d="M 0,0 L 160,0 L160,4 L 0,4 Z M 0,0 L0,160 L4,160 L4,0 Z" stroke="#992828" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+    <div class="header">
+        <h1>艺脉AI</h1>
+        <p>非遗数字活化创作与版权存证平台</p>
+    </div>
+    <div class="nav">
+        <a href="Asy.html">首页</a>
+        <a href="AI.html">非遗AI创作</a>
+        <a href="fy.qh.html" class="active">图片非遗化</a>
+        <a href="bq.html">版权存证中心</a>
+        <a href="zl.html">非遗文化博览</a>
+        <a href="gl.html">作品管理</a>
+        <a href="js.html">平台介绍</a>
+    </div>
+    <div class="main">
+        <h1>图片非遗化</h1>
+        <p class="desc">上传图片，一键转换成非遗艺术风格</p>
+        <div class="box">
+            <input type="file" id="imgUpload" accept="image/*">
+            <select id="styleSelect" onchange="goStylePage(this)">
+                <option value="brocade" data-href="fy.yj.html">云锦风格</option>
+                <option value="qinghua" data-href="fy.qh.html">青花瓷风格</option>
+                <option value="papercut" data-href="fy.jz.html">剪纸风格</option>
+                <option value="shadow" data-href="fy.pyx.html">皮影风格</option>
+            </select>
+            <div class="btn-group">
+                <button onclick="transferImg()">开始风格转换</button>
+                <button id="saveBtn" onclick="saveToWork()">保存作品到作品管理</button>
+            </div>
+            <div id="resultArea"></div>
+        </div>
+    </div>
+<script>
+//下拉切换跳转对应页面，同时保存选中风格
+function goStylePage(sel){
+    const href = sel.options[sel.selectedIndex].dataset.href;
+    localStorage.setItem("selectStyle", sel.value);
+    if(href){
+        location.href = href;
+    }
+}
+//页面加载恢复上次选中的选项（和AI.html逻辑配套）
+window.onload = function(){
+    let s = localStorage.getItem("selectStyle");
+    if(s){
+        document.getElementById("styleSelect").value = s;
+    }
+}
+
+//全局变量，保存当前生成图片路径
+let currentImgPath = "";
+
+//第一步：转换，只展示图片，不自动保存
+function transferImg(){
+    const fileDom = document.getElementById("imgUpload");
+    const resultDom = document.getElementById("resultArea");
+    if(!fileDom.files[0]){
+        alert("请先选择一张图片上传！");
+        return;
+    }
+    //这里是你的图片路径，DW插入图片后可以替换这串
+    currentImgPath = "cp/yj2.png";
+    resultDom.innerHTML = `
+        <p>【模拟转换】图片上传成功，已完成非遗风格迁移</p>
+        <div style="margin-top:10px;">
+            <img src="${currentImgPath}" alt="转换后图片" style="max-width:100%;max-height:300px;border:1px solid #d4c7b0;border-radius:6px;">
+        </div>
+        <p style="margin-top:8px;color:#666;">确认效果后，点击上方按钮保存作品</p>
+    `;
+}
+
+//第二步：用户手动点击才保存作品
+function saveToWork(){
+    if(!currentImgPath){
+        alert("请先点击【开始风格转换】生成图片！");
+        return;
+    }
+    let workList = JSON.parse(localStorage.getItem("works") || "[]");
+    workList.push({
+        title:"图片风格迁移作品",
+        style:"图片非遗化",
+        time:new Date().toLocaleString(),
+        content:"图片非遗化，完成风格迁移转换",
+        imgSrc: currentImgPath
+    });
+    localStorage.setItem("works",JSON.stringify(workList));
+    alert("✅已保存到作品管理！请前往作品管理中查看");
+}
+</script>
+</body>
+</html>
